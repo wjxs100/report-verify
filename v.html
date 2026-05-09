@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>报告查验</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:sans-serif;background:#667eea;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:15px}
+.card{background:#fff;border-radius:12px;padding:20px;max-width:350px;width:100%;box-shadow:0 8px 30px rgba(0,0,0,.15)}
+h1{font-size:18px;text-align:center;margin-bottom:15px;color:#333}
+.badge{display:block;background:#4CAF50;color:#fff;padding:5px 12px;border-radius:15px;font-size:12px;text-align:center;margin-bottom:15px;width:fit-content;margin-left:auto;margin-right:auto}
+.info{background:#f5f5f5;border-radius:8px;padding:12px}
+.row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee;font-size:13px}
+.row:last-child{border:none}
+.l{color:#666}
+.r{color:#333;font-weight:500}
+.ft{text-align:center;margin-top:12px;font-size:11px;color:#999}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>📋 房地产抵押估价报告</h1>
+<span class="badge">✓ 有效</span>
+<div class="info">
+<div class="row"><span class="l">报告编号</span><span class="r" id="i">-</span></div>
+<div class="row"><span class="l">估价对象</span><span class="r" id="a">-</span></div>
+<div class="row"><span class="l">权利人</span><span class="r" id="o">-</span></div>
+<div class="row"><span class="l">抵押价值</span><span class="r" id="v">-</span></div>
+<div class="row"><span class="l">出具日期</span><span class="r" id="d">-</span></div>
+</div>
+<p class="ft" id="t"></p>
+</div>
+<script>
+const p=new URLSearchParams(location.search);
+const g=k=>decodeURIComponent(p.get(k)||'-');
+document.getElementById('i').textContent=g('i');
+document.getElementById('a').textContent=g('a');
+document.getElementById('o').textContent=g('o');
+document.getElementById('v').textContent=g('v')+'元';
+document.getElementById('d').textContent=g('d');
+const n=new Date();
+document.getElementById('t').textContent='查验:'+n.getFullYear()+'/'+(n.getMonth()+1)+'/'+n.getDate();
+</script>
+</body>
+</html>
