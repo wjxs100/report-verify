@@ -144,27 +144,13 @@
 
     // 填充报告信息
     document.getElementById('reportId').textContent = getUrlParam('id');
-    document.getElementById('address').textContent = getUrlParam('a');
-    document.getElementById('owner').textContent = getUrlParam('o');
-    document.getElementById('area').textContent = '-';
-    document.getElementById('value').textContent = getUrlParam('v') + '元';
-    document.getElementById('agency').textContent = '-';
-
-    // 处理日期（格式：20260509 -> 二〇二六年五月九日）
-    const dateNum = getUrlParam('t');
-    if (dateNum && dateNum !== '-') {
-        const y = dateNum.substring(0, 4);
-        const m = parseInt(dateNum.substring(4, 6));
-        const day = parseInt(dateNum.substring(6, 8));
-        const yue = ['正','二','三','四','五','六','七','八','九','十','十一','十二'];
-        const ri = ['','一','二','三','四','五','六','七','八','九','十','十一','十二','十三','十四','十五','十六','十七','十八','十九','二十','二十一','二十二','二十三','二十四','二十五','二十六','二十七','二十八','二十九','三十','三十一'];
-        const nian = '零一二三四五六七八九';
-        const yc = '二〇' + y.slice(2).split('').map(d => nian[parseInt(d)]).join('');
-        document.getElementById('date').textContent = yc + '年' + yue[m-1] + '月' + ri[day] + '日';
-    } else {
-        document.getElementById('date').textContent = '-';
-    }
-    document.getElementById('appraiser').textContent = '-';
+    document.getElementById('address').textContent = getUrlParam('addr');
+    document.getElementById('owner').textContent = getUrlParam('owner');
+    document.getElementById('area').textContent = getUrlParam('area');
+    document.getElementById('value').textContent = getUrlParam('val');
+    document.getElementById('agency').textContent = getUrlParam('agency');
+    document.getElementById('date').textContent = getUrlParam('date');
+    document.getElementById('appraiser').textContent = getUrlParam('appr');
 
     // 显示查验时间
     const now = new Date();
